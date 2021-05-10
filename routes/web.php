@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/admin/addshart', [\App\Http\Controllers\ShartController::class, 'create'])->name('addshart');
+Route::post('/admin/addshart', [\App\Http\Controllers\ShartController::class, 'store'])->name('saveshart');
 
 
 Route::view('home', 'home')->middleware('auth');
