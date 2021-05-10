@@ -17,4 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/admin/addshart', [\App\Http\Controllers\ShartController::class, 'create'])->name('addshart');
+
+
 Route::view('home', 'home')->middleware('auth');
+Route::get('admin/', [\App\Http\Controllers\HomeController::class, 'admin'])->middleware('admin');
