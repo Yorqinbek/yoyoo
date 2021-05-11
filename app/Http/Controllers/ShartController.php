@@ -34,18 +34,34 @@ class ShartController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         //dd($request);
+
         $request->validate([
-            'first_name' => 'required',
-            'phone' => 'required',
-            'phone.*' => 'required',
-            'email' => 'required',
-            'email.*' => 'required'
+            'title' => 'required',
+            'body' => 'required',
+            'yo' => 'required',
         ]);
+
+        $tiplar = '';
+
+        foreach ($request->get('types') as $tip){
+            $tiplar.=$tip.',';
+        }
+
+        $sharts = new shart([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'yo' => $request->get('yo'),
+            'tip_name' => $request->get('tips'),
+            'type' => $tiplar,
+        ]);
+        $sharts->save();
+
+        return redirect('/admin/addshart')->with('success', 'Shart saved!');
 
     }
 
