@@ -33,12 +33,12 @@
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Ro'yxatdan o'tish</h2>
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="">
                     @csrf
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
-                                <label class="label">FISH</label>
+                                <label class="label">FISH </label>
                                 @if($errors->has('name'))
                                     <p style="color: red">FISH faqat harflardan va kamida 5 ta harfdan iborat bo'lishi kerak</p>
                                 @endif

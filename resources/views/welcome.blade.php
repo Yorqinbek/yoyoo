@@ -26,7 +26,6 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <?php
-                        // 301 Moved Permanently
                         header("Location: /home", true, 301);
                         exit();
                         ?>

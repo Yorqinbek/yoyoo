@@ -20,7 +20,7 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
 
-        //dd($input);
+        //dd($username);
 
         Validator::make($input, [
             'name' => ['required', 'string', 'regex:/^[A-Za-z]+$/', 'min:5', 'max:50'],
@@ -50,4 +50,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
     }
+
+
 }
