@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\QrCodes;
+use App\Models\Shart;
+use App\Models\Tip;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +15,18 @@ class HomeController extends Controller
 {
     public function index()
     {
-
         return view('home');
     }
 
     public function admin()
     {
-        return view('admin.home');
+        if(\Illuminate\Support\Facades\Auth::check())
+        {
+            $users = User::all();
+            $sharts = Shart::all();
+            return view('admin.home',compact('users','sharts'));
+        }
+        return view('auth.login');
     }
 
     public function create_with_ref(Request $request, $username)
@@ -58,4 +65,13 @@ class HomeController extends Controller
         $user->save();
         return redirect('/home');
     }
+
+    public function update_user_yo(Request $request,$id){
+        $user = User::find($id);
+        $user->yo = $request->yo;
+        $user->save();
+        return back()->with('success', 'Update successfuly');
+    }
+
+
 }

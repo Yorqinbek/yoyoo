@@ -26,8 +26,13 @@ class ShartController extends Controller
      */
     public function create()
     {
-        $tips = Tip::all();
-        return view('admin.add_shart',compact('tips'));
+        if(\Illuminate\Support\Facades\Auth::check())
+        {
+            $tips = Tip::all();
+            return view('admin.add_shart',compact('tips'));
+        }
+        return redirect('/login');
+
     }
 
     /**

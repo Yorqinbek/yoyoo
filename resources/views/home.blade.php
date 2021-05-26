@@ -74,7 +74,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-2">
+           <!-- <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-2">
                 <h2 class="fw-700 text-grey-900 mt-1">Beeline<span
                         class="d-block font-xssss fw-500 mt-2 lh-3 text-grey-500">Reklama</span></h2>
 
@@ -98,5 +98,6 @@
                             class="d-none-xs">Share</span></a>
                 </div>
             </div>
+        -->
         </div>
 @endsection

@@ -12,11 +12,13 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "html2text/html2text": "^4.3",
         "laravel/fortify": "^1.4",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.2",
-        "livewire/livewire": "^2.4"
+        "livewire/livewire": "^2.4",
+        "socialiteproviders/instagram": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

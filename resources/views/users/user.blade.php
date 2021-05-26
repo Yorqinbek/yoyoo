@@ -18,7 +18,7 @@
     <link href="{{ asset('css/user/css/emoji.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user/css/lightbox.css') }}" rel="stylesheet">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/yoyoo.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/yoyoo.svg')}}">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 
     @yield('css')
@@ -105,6 +105,9 @@
                         <li><a href="/home/xabarlar" class="nav-content-bttn {{ Request::is('home/xabarlar') || request()->segment(2) == 'xabarlar'  ? 'active' : '' }} open-font h-auto pt-2 pb-2"><i
                                     class="font-sm feather-bell me-3 text-grey-500"></i><span>Xabarlar</span></a>
                         </li>
+                        <li><a href="{{route('money')}}" class="nav-content-bttn {{ Request::is('home/money') || request()->segment(2) == 'money'  ? 'active' : '' }} open-font h-auto pt-2 pb-2"><i
+                                    class="font-sm feather-dollar-sign me-3 text-grey-500"></i><span>Pulni yechish</span></a>
+                        </li>
                         <li><a href="{{ route('logout') }}" class="nav-content-bttn open-font h-auto pt-2 pb-2"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit()"><i
                                     class="font-sm feather-log-out me-3 text-grey-500"></i><span>Chiqish</span></a></li>
@@ -169,35 +172,28 @@
                             <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
                                 <a href="#"
                                    class="p-2 lh-28 w-100 bg-primary-gradiant text-white text-center font-xssss fw-700 rounded-xl"><i
-                                        class="feather-external-link font-xss me-2"></i> Like Page</a>
+                                        class="feather-external-link font-xss me-2"></i>Batafsil</a>
                             </div>
                         </div>
 
 
                         <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
-                            <div class="card-body d-flex align-items-center p-4">
-                                <h4 class="fw-700 mb-0 font-xssss text-grey-900">Suggest Pages</h4>
-                                <a href="default-group.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
-                            </div>
-                            <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
-                                <img src="{{asset('images/g-2.jpg')}}" alt="img" class="img-fluid rounded-xxl mb-2">
+                            <div class="card-body d-flex align-items-center">
+                                <h2 class="fw-700 text-grey-900 mt-1">yoyoo<span
+                                        class="d-block font-xssss fw-500 mt-2 lh-3 text-grey-500">Reklama</span></h2>
 
+                            </div>
+                            <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
+                                <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
+                                <img src="{{asset('images/reklama.png')}}" alt="img" class="img-fluid rounded-xxl mb-2">
+                                </div>
                             </div>
                             <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
                                 <a href="#"
                                    class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
-                                        class="feather-external-link font-xss me-2"></i> Like Page</a>
+                                        class="feather-external-link font-xss me-2"></i> Batafsil</a>
                             </div>
 
-                            <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden">
-                                <img src="{{asset('images/g-2.jpg')}}" alt="img"
-                                     class="img-fluid rounded-xxl mb-2 bg-lightblue">
-                            </div>
-                            <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
-                                <a href="#"
-                                   class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
-                                        class="feather-external-link font-xss me-2"></i> Like Page</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,7 +270,8 @@
 
 <script type="text/javascript">
     @if($view)
-        toastr.success("Yangi xabar");
+        toastr.options.closeButton = true;
+        toastr.success('Sizda o`qilmagan xabar bor', 'Xabar', {timeOut: 2000})
     @else
     @endif
 </script>

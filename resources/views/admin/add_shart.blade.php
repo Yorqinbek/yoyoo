@@ -48,8 +48,9 @@
                                     <!-- textarea -->
                                     <div class="form-group">
                                         <label>Body</label>
-                                        <textarea class="form-control" name="body" value="{{old('body')}}" rows="5" placeholder="Enter ..."></textarea>
+                                        <textarea class="form-control" id="body" name="body" value="{{old('body')}}" rows="5" placeholder="Enter ..."></textarea>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">

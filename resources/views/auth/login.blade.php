@@ -26,8 +26,6 @@
 </head>
 <body>
 <div id="app">
-
-
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -73,12 +71,13 @@
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
                     </div>
-
                     <div class="text-center p-t-136">
-
+                        yoyoo © 2021 <br>Created by<strong> Yorqinbek</strong> inc
                     </div>
                 </form>
+
             </div>
+
         </div>
     </div>
 

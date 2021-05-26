@@ -134,6 +134,7 @@
 
                     <div class="p-t-15">
                         <button class="btn btn--radius-2 btn--blue" type="submit">Ro'yxatdan o'tish</button>
+                        <a href="/login" class="btn btn--radius-2 btn--green" type="submit">Orqaga</a>
                     </div>
                 </form>
             </div>

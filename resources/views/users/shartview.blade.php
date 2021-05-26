@@ -94,7 +94,10 @@
                         <div class="panel panel-default p-0 bg-transparent rounded-0">
                             <div id="collapseThree" class="panel-collapse collapse in show" role="tabpanel"
                                  aria-labelledby="headingThree">
-                                <p class="text-grey-700 mb-4 font-xsss lh-28 fw-500 mt-3">{{$shart->body}}</p>
+                                <p class="text-grey-700 mb-4 font-xsss lh-28 fw-500 mt-3">
+
+                                    {!! $shart->body !!}
+                                </p>
                                 @if($shart->tip_name==="qrcode")
                                     <form method="post" action="/home/qrcode/{{$shart->id}}">
                                         @csrf
@@ -213,6 +216,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
 @section('script')

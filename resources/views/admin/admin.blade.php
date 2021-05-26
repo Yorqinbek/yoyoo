@@ -225,19 +225,7 @@
                             <li class="nav-item">
                                 <a href="{{route('messages')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Inbox</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/compose.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Compose</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Read</p>
+                                    <p>Xabar</p>
                                 </a>
                             </li>
                         </ul>
@@ -262,21 +250,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="/admin/users" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>Users</p>
                                 </a>
                             </li>
                         </ul>
