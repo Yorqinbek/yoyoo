@@ -9,12 +9,13 @@
         }
 
         .imgPreview img {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             padding: 8px;
-            margin:8px;
+            margin: 8px;
             max-width: 150px;
         }
+
         #qr-canvas {
             margin: 0 auto;
             width: calc(100% - 20px);
@@ -39,6 +40,7 @@
             max-width: 700px;
             background-color: white;
         }
+
         #container {
             text-align: center;
             margin: 0;
@@ -53,11 +55,11 @@
                     <strong>{{ $message }}</strong>
                 </div>
             @endif
-                @if ($message = Session::get('danger'))
-                    <div class="alert alert-success">
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
+            @if ($message = Session::get('danger'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
 
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
@@ -111,7 +113,8 @@
                                                 <canvas hidden="" id="qr-canvas"></canvas>
 
                                                 <div id="qr-result" hidden="">
-                                                    <b style="color: red">Kod aniqlandi:</b> <b><span id="outputData"></span></b>
+                                                    <b style="color: red">Kod aniqlandi:</b> <b><span
+                                                            id="outputData"></span></b>
                                                     <input name="kod" id="maxsuskod" type="text" hidden>
                                                 </div>
                                         </div>
@@ -126,153 +129,157 @@
                                         </div>
                                     </form>
                                     <div>
-                                @endif
-                            </div>
-                            <div>
-                            @if($user_shart_status==1)
-                                <div>
-                                    @elseif($user_shart_status==2)
-                                        <div>
-                                            @else
-                                                @if($shart->tip_name==="install_apps")
-                                                    <form action="{{Request::url()}}" method="post"
-                                                          enctype="multipart/form-data">
-                                                        @csrf
-                                                        <div class="mt-1">
-                                                            <label class="form-label" for="customFile">Dasturga kirgan
-                                                                holatdagi rasm</label>
-                                                            <input type="file" name="imageFile[]" class="form-control"
-                                                                   id="customFile"/>
-                                                        </div>
-                                                        <div class="mt-1 mb-3">
-                                                            <label class="form-label" for="customFile2">Comment qoldirilgan
-                                                                rasm</label>
-                                                            <input type="file" name="imageFile[]" class="form-control"
-                                                                   id="customFile2"/>
-                                                        </div>
-                                                        <div>
-                                                            <div class="user-image text-center">
-                                                                <div class="imgPreview"></div>
-                                                            </div>
-                                                    </form>
-                                                    <div class="mt-6">
-                                                        <div class="chat-form d-block overflow-hidden">
-                                                            <button
-                                                                class="bg-current border-0 p-0 float-right w200 text-white fw-600 font-xssss text-uppercase">
-                                                                Jo'natish
-                                                            </button>
-                                                        </div>
+                                        @elseif($shart->tip_name==="tez_aytish")
+                                            <form id="formtez" method="Post" action="/home/upload_file" class="chat-form d-block overflow-hidden" enctype="multipart/form-data">
+                                                @csrf
+                                                <button id="recordButton"
+                                                        class="bg-primary border-0 btn-round-md float-left d-lg-block d-none">
+                                                    <i class="ti-microphone text-white lh-4 font-xs"></i></button>
+                                                <button id="stopButton"
+                                                        class="bg-danger border-0 btn-round-md ms-1 float-left d-lg-block"><i
+                                                        class="ti-control-stop text-white lh-4 font-xs"></i></button>
+                                                <button
+                                                    class="bg-current border-0 p-0 float-right w200 text-white fw-600 font-xssss text-uppercase">
+                                                    Send
+                                                </button>
+                                                <br>
+                                                <br>
+                                            <p id="formats" style="display: none;">Format: 1 channel pcm @ 48kHz</p>
+                                            <p class="mt-2"><strong>Yozilgan ovozlar:</strong></p>
+                                            <ol id="recordingsList"></ol>
+                                            </form>
+                                        @endif
+                                    </div>
+                                    <div>
+                                        @if($user_shart_status==1)
+                                            <div>
+                                                @elseif($user_shart_status==2)
+                                                    <div>
+                                                        @else
+                                                            @if($shart->tip_name==="install_apps")
+                                                                <form action="{{Request::url()}}" method="post"
+                                                                      enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="mt-1">
+                                                                        <label class="form-label" for="customFile">Dasturga
+                                                                            kirgan
+                                                                            holatdagi rasm</label>
+                                                                        <input type="file" name="imageFile[]"
+                                                                               class="form-control"
+                                                                               id="customFile"/>
+                                                                    </div>
+                                                                    <div class="mt-1 mb-3">
+                                                                        <label class="form-label" for="customFile2">Izoh
+                                                                            qoldirilgan
+                                                                            rasm</label>
+                                                                        <input type="file" name="imageFile[]"
+                                                                               class="form-control"
+                                                                               id="customFile2"/>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="user-image text-center">
+                                                                            <div class="imgPreview"></div>
+                                                                        </div>
+                                                                </form>
+                                                                <div class="mt-6">
+                                                                    <div class="chat-form d-block overflow-hidden">
+                                                                        <button
+                                                                            class="bg-current border-0 p-0 float-right w200 text-white fw-600 font-xssss text-uppercase">
+                                                                            Jo'natish
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @endif
                                                     </div>
-                                                @endif
-                                            @endif
-                                        </div>
-                                </div>
+                                            </div>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0" style="display: none">
-            <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-0">
-                <div class="card-body d-flex align-items-center p-4">
-                    <h2 class="fw-700 text-grey-900 mt-1">Beeline<span
-                            class="d-block font-xssss fw-500 mt-2 lh-3 text-grey-500">Reklama</span></h2>
+                <div class="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0" style="display: none">
+                    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-0">
+                        <div class="card-body d-flex align-items-center p-4">
+                            <h2 class="fw-700 text-grey-900 mt-1">Beeline<span
+                                    class="d-block font-xssss fw-500 mt-2 lh-3 text-grey-500">Reklama</span></h2>
 
-                </div>
+                        </div>
 
-                <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
-                    <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                        <video class="float-right w-100" autoplay muted loop>
-                            <source src="{{asset('images/beeline.mp4')}}" type="video/mp4">
-                        </video>
+                        <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
+                            <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
+                                <video class="float-right w-100" autoplay muted loop>
+                                    <source src="{{asset('images/beeline.mp4')}}" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
+                        <div class="card-body d-flex align-items-center p-4">
+                            <h4 class="fw-700 mb-0 font-xssss text-grey-900">Suggest Pages</h4>
+                            <a href="default-group.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                        </div>
+                        <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
+                            <img src="{{asset('images/g-2.jpg')}}" alt="img" class="img-fluid rounded-xxl mb-2">
+
+                        </div>
+                        <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
+                            <a href="#"
+                               class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
+                                    class="feather-external-link font-xss me-2"></i> Like Page</a>
+                        </div>
+
+                        <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden">
+                            <img src="{{asset('images/g-2.jpg')}}" alt="img"
+                                 class="img-fluid rounded-xxl mb-2 bg-lightblue">
+                        </div>
+                        <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
+                            <a href="#"
+                               class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
+                                    class="feather-external-link font-xss me-2"></i> Like Page</a>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
-            <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
-                <div class="card-body d-flex align-items-center p-4">
-                    <h4 class="fw-700 mb-0 font-xssss text-grey-900">Suggest Pages</h4>
-                    <a href="default-group.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
-                </div>
-                <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
-                    <img src="{{asset('images/g-2.jpg')}}" alt="img" class="img-fluid rounded-xxl mb-2">
-
-                </div>
-                <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
-                    <a href="#"
-                       class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
-                            class="feather-external-link font-xss me-2"></i> Like Page</a>
-                </div>
-
-                <div class="card-body d-flex pt-0 ps-4 pe-4 pb-0 overflow-hidden">
-                    <img src="{{asset('images/g-2.jpg')}}" alt="img"
-                         class="img-fluid rounded-xxl mb-2 bg-lightblue">
-                </div>
-                <div class="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
-                    <a href="#"
-                       class="p-2 lh-28 w-100 bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
-                            class="feather-external-link font-xss me-2"></i> Like Page</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-@endsection
-@section('script')
+            @endsection
+            @section('script')
+                @if($shart->tip_name==="qrcode")
                     <script src="{{ asset('css/user/js/qrCodeScanner.js') }}"></script>
-    <script type="text/javascript">
-        // Multiple images preview with JavaScript
-        var multiImgPreview = function (input, imgPreviewPlaceholder) {
+                @endif
+                @if($shart->tip_name==="tez_aytish")
+                    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+                    <script src="{{ asset('css/user/js/reco.js') }}"></script>
+                @endif
+                <script type="text/javascript">
+                    // Multiple images preview with JavaScript
+                    var multiImgPreview = function (input, imgPreviewPlaceholder) {
 
-            if (input.files) {
-                var filesAmount = input.files.length;
+                        if (input.files) {
+                            var filesAmount = input.files.length;
 
-                for (i = 0; i < filesAmount; i++) {
-                    var reader = new FileReader();
+                            for (i = 0; i < filesAmount; i++) {
+                                var reader = new FileReader();
 
-                    reader.onload = function (event) {
-                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-                    }
+                                reader.onload = function (event) {
+                                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                                }
 
-                    reader.readAsDataURL(input.files[i]);
-                }
-            }
+                                reader.readAsDataURL(input.files[i]);
+                            }
+                        }
 
-        };
+                    };
 
-        $('#images').on('change', function () {
-            multiImgPreview(this, 'div.imgPreview');
-        });
-        /*$("#outputData").on('change',function(){
-            //Do calculation and change value of other span2,span3 here
-            alert("Changed");
-        });*/
-        /*$("#outputData").on('DOMSubtreeModified',function(){
-            var kod = $("#outputData").text();
-            alert(kod);
+                    $('#images').on('change', function () {
+                        multiImgPreview(this, 'div.imgPreview');
+                    });
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "/home/shart/qrcode/",
-                type:"POST",
-                dataType: "json",
-                data:{
-                    kod:kod,
-                },
-                success:function(data){
-                    alert(data.success);
-                },
-            });
-        });*/
-
-        $("#outputData").on('DOMSubtreeModified',function(){
-            var kod = $("#outputData").text();
-            $('#maxsuskod').attr('value',kod)
-        });
-    </script>
+                    $("#outputData").on('DOMSubtreeModified', function () {
+                        var kod = $("#outputData").text();
+                        $('#maxsuskod').attr('value', kod)
+                    });
+                </script>
 @endsection

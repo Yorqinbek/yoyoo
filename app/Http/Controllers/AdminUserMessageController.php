@@ -50,7 +50,7 @@ class AdminUserMessageController extends Controller
         $shart_id = $shart_answer->shart_id;
 
         if($request->has('tasdiqla')){
-            $shart = Shart::find($id);
+            $shart = Shart::find($shart_id);
             $explode_id_user_check = array_map('intval', explode(',', $shart->user_check));
             unset($explode_id_user_check[array_search( Auth::id(), $explode_id_user_check )]);
             $shart->user_check = implode(",", $explode_id_user_check);
@@ -81,7 +81,7 @@ class AdminUserMessageController extends Controller
             return redirect('/admin/xabarlar/');
         }
         else{
-            $shart = Shart::find($id);
+            $shart = Shart::find($shart_id);
             $explode_id_user_check = array_map('intval', explode(',', $shart->user_check));
             unset($explode_id_user_check[array_search( Auth::id(), $explode_id_user_check )]);
             $shart->user_check = implode(",", $explode_id_user_check);

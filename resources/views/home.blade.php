@@ -22,8 +22,7 @@
                         @endif
                     </div>
                     <div class="card-body p-0 me-lg-4">
-                        <p class="fw-500 text-grey-900 lh-26 font-xssss w-100 mb-2">{{implode(' ', array_slice(explode(' ', $shart->body), 0, 30))}}
-                            ...<a
+                        <p class="fw-500 text-grey-900 lh-26 font-xssss w-100 mb-2">{!! mb_strimwidth($shart->body, 0, 200, '...') !!}   <a
                                 href="/home/shart/{{$shart->id}}" class="fw-600 text-primary ms-2">Ko'rish</a></p>
                     </div>
                     <div class="card-body d-block p-0 mb-3">
@@ -46,30 +45,11 @@
                         @endif
 
 
-                        <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
+                        <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Bo'lishish</span></a>
                        <div class="dropdown-menu dropdown-menu-end p-4 rounded-xxl border-0 shadow-lg" aria-labelledby="dropdownMenu21" data-popper-placement="top-end" data-popper-reference-hidden="" data-popper-escaped="" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(-10px, -61px);">
                             <h4 class="fw-700 font-xss text-grey-900 d-flex align-items-center">Share <i class="feather-x ms-auto font-xssss btn-round-xs bg-greylight text-grey-900 me-2"></i></h4>
-                            <div class="card-body p-0 d-flex">
-                                <ul class="d-flex align-items-center justify-content-between mt-2">
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-facebook"><i class="font-xs ti-facebook text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-twiiter"><i class="font-xs ti-twitter-alt text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-linkedin"><i class="font-xs ti-linkedin text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-instagram"><i class="font-xs ti-instagram text-white"></i></a></li>
-                                    <li><a href="#" class="btn-round-lg bg-pinterest"><i class="font-xs ti-pinterest text-white"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="card-body p-0 d-flex">
-                                <ul class="d-flex align-items-center justify-content-between mt-2">
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-tumblr"><i class="font-xs ti-tumblr text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-youtube"><i class="font-xs ti-youtube text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-flicker"><i class="font-xs ti-flickr text-white"></i></a></li>
-                                    <li class="me-1"><a href="#" class="btn-round-lg bg-black"><i class="font-xs ti-vimeo-alt text-white"></i></a></li>
-                                    <li><a href="#" class="btn-round-lg bg-whatsup"><i class="font-xs feather-phone text-white"></i></a></li>
-                                </ul>
-                            </div>
                             <h4 class="fw-700 font-xssss mt-4 text-grey-500 d-flex align-items-center mb-3">Copy Link</h4>
-                            <i class="feather-copy position-absolute right-35 mt-3 font-xs text-grey-500"></i>
-                            <input type="text" value="https://socia.be/1rGxjoJKVF0" class="bg-grey text-grey-500 font-xssss border-0 lh-32 p-2 font-xssss fw-600 rounded-3 w-100 theme-dark-bg">
+                            <input type="text" value="{{Request::url()."/shart/".$shart->id}}" class="bg-grey text-grey-500 font-xssss border-0 lh-32 p-2 font-xssss fw-600 rounded-3 w-100 theme-dark-bg">
                         </div>
                     </div>
                 </div>

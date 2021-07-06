@@ -66,7 +66,7 @@
             <div class="nav-content">
                 <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
                     <div class="card-body position-relative h150 bg-image-cover bg-image-center"
-                         style="background-image: url(http://uitheme.net/sociala/images/bb-9.jpg);"></div>
+                         style="background-image: url({{asset('images/user_backgroud.jpg')}});"></div>
                     <div class="card-body d-block pt-4 text-center">
 
                         <h4 class="font-xs ls-1 fw-700 text-grey-900">{{Auth::user()->name}} <span
@@ -107,6 +107,9 @@
                         </li>
                         <li><a href="{{route('money')}}" class="nav-content-bttn {{ Request::is('home/money') || request()->segment(2) == 'money'  ? 'active' : '' }} open-font h-auto pt-2 pb-2"><i
                                     class="font-sm feather-dollar-sign me-3 text-grey-500"></i><span>Pulni yechish</span></a>
+                        </li>
+                        <li><a href="/home/aloqa" class="nav-content-bttn {{ Request::is('home/aloqa') || request()->segment(2) == 'aloqa'  ? 'active' : '' }} open-font h-auto pt-2 pb-2"><i
+                                    class="font-sm feather-help-circle me-3 text-grey-500"></i><span>Aloqa</span></a>
                         </li>
                         <li><a href="{{ route('logout') }}" class="nav-content-bttn open-font h-auto pt-2 pb-2"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit()"><i

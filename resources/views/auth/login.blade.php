@@ -36,7 +36,7 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <img class="img-fluid rounded mx-auto d-block" src="images/yoyo.JPG">
+                        <img class="img-fluid rounded mx-auto d-block" src="images/yoyoo.jpg">
                     </div>
                     @if($errors->has('username'))
                         <p class="text-center" style="color: red">Username yoki parol xato</p>

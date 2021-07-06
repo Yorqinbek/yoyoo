@@ -237,6 +237,23 @@ Route::get('/home/xabarlar/{id}', function ($id) {
     return redirect('/login');
 
 });
+
+Route::get('/home/aloqa/', function () {
+
+    if(\Illuminate\Support\Facades\Auth::check())
+    {
+        $view = false;
+        $messages = DB::table('admin_user_messages')->where('view','=',0);
+        if($messages->count()>0){
+            $view = true;
+        }
+        return view('users.aloqa',compact('view'));
+    }
+    return redirect('/login');
+
+});
+
+
 Route::get('/home/video/{id}', function ($id) {
 
     if(\Illuminate\Support\Facades\Auth::check())
@@ -303,6 +320,8 @@ Route::post('/home/money', function (\Illuminate\Http\Request $request) {
     }
 
 })->name('money_post');
+
+Route::post('home/upload_file',[\App\Http\Controllers\QrCodesController::class, 'tez_aytish']);
 
 Route::get('login/{provider}', [\App\Http\Controllers\SocialController::class, 'redirect']);
 Route::get('login/{provider}/callback',[\App\Http\Controllers\SocialController::class, 'Callback']);
